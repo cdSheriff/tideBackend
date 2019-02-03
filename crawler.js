@@ -1,4 +1,6 @@
 const fetch = require('node-fetch')
+const JSDOM = require('jsdom').JSDOM
+const http = require('http')
 
 
 
@@ -56,6 +58,37 @@ function regexIt() {
 		})
 	// console.log(tides)
 }
+
+function locName() {
+	let url = 'http://www.bom.gov.au/australia/tides/print.php?aac=SA_TP036&type=tide&tz=Australia/Adelaide&tz_js=ACDT'
+	// let regex = /Bureau([\s\S]*)Meteorology/m
+	let selector = 'h2'
+	let regex = /(?=\<h3\>)([\s\S]*?)\<\/tbody\>/mg
+	let tides = []
+
+	fetch(url)
+		.then(resp => resp.text())
+		.then(text => {
+			let dom = new JSDOM(text)
+			let location = dom.window.document.querySelector("h2").textContent
+			console.log(location.split('–')[0].slice(0,-1))
+		})
+}
+
+function testStation() {
+	let url = 'http://www.bom.gov.au/australia/tides/print.php?aac=SA_TP067&type=tide&tz=Australia/Adelaide&tz_js=ACDT'
+
+	fetch(url)
+		.then(resp => resp.text())
+		.then(text => {
+			if (text.includes('result-error')) {
+				console.log('Bad station!!')
+			} else {
+				console.log('station is fine')
+			}
+		})
+}
+
 
 function parseDay(m, method = false) {
 	// only look at tr > th (this may be a good use of JSDOM if it can return whole element, not just innter text)
@@ -118,5 +151,5 @@ function testReg() {
 	console.log(result)
 }
 
-regexIt()
+testStation()
 // testReg()
