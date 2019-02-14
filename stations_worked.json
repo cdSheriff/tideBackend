@@ -1856,11 +1856,11 @@
         ],
         "Christmas Island": [
             "WA_TP009",
-            "tz"
+            "Indian/Christmas"
         ],
         "Home Island": [
             "WA_TP010",
-            "tz"
+            "Indian/Cocos"
         ],
         "West Jetty": [
             "WA_TP039",
@@ -2264,27 +2264,27 @@
         ],
         "Casey": [
             "TAS_TP009",
-            "tz"
+            "Antarctica/Casey"
         ],
         "Commonwealth Bay": [
             "TAS_TP010",
-            "tz"
+            "Australia/Hobart"
         ],
         "Davis": [
             "TAS_TP011",
-            "tz"
+            "Antarctica/Davis"
         ],
         "Heard Island": [
             "TAS_TP015",
-            "tz"
+            "Antarctica/Mawson"
         ],
         "Mawson": [
             "TAS_TP012",
-            "tz"
+            "Antarctica/Mawson"
         ],
         "Zhong Shan": [
             "TAS_TP013",
-            "tz"
+            "Antarctica/Davis"
         ]
     },
     "NT": {
@@ -2652,103 +2652,103 @@
     "INT": {
         "Alotau (Milne Bay)": [
             "INT_TP010",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Anewa Bay": [
             "INT_TP011",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Apia": [
             "INT_TP022",
-            "tz"
+            "Pacific/Apia"
         ],
         "Bobo Island": [
             "INT_TP028",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Bogia": [
             "INT_TP029",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Boia Boia Waga": [
             "INT_TP030",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Bulavai Point": [
             "INT_TP032",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Cape Deliverance": [
             "INT_TP033",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Daru": [
             "INT_TP034",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Dedele Point": [
             "INT_TP035",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Dregerhafen": [
             "INT_TP012",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "East Cape": [
             "INT_TP048",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Eleonora Bay": [
             "INT_TP036",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Funafuti": [
             "INT_TP026",
-            "tz"
+            "Pacific/Funafuti"
         ],
         "Goaribari Island": [
             "INT_TP037",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Honiara": [
             "INT_TP023",
-            "tz"
+            "Pacific/Guadalcanal"
         ],
         "Jackson Bay": [
             "INT_TP008",
-            "tz"
+            "Pacific/Auckland"
         ],
         "Kanawea Island": [
             "INT_TP038",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Kavieng": [
             "INT_TP016",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Kieta": [
             "INT_TP039",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Lae": [
             "INT_TP013",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Lata Wharf": [
             "INT_TP050",
-            "tz"
+            "Pacific/Guadalcanal"
         ],
         "Lautoka": [
             "INT_TP003",
-            "tz"
+            "Pacific/Fiji"
         ],
         "Lombrum": [
             "INT_TP015",
-            "tz"
+            "Pacific/Port_Moresby"
         ],
         "Luganville Wharf": [
             "INT_TP049",
-            "tz"
+            "Pacific/Efate"
         ],
         "Madang (Nagada Harbour)": [
             "INT_TP014",

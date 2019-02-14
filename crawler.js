@@ -71,7 +71,7 @@ fetch(url)
 		}
 		// let regionWrite = 'const regions = ' + JSON.stringify(regions)
 		// fs.writeFile('stations.json', regionWrite, (err) => {
-		fs.writeFile('stations.json', JSON.stringify(regions), (err) => {
+		fs.writeFile('stations.JSON', JSON.stringify(regions, null, 4), 'utf8', (err) => {
 			if (err) throw err;
 			console.log('saved the list')
 		})
