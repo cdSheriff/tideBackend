@@ -34,33 +34,43 @@ let url = "http://www.bom.gov.au/australia/tides/#!"
 fetch(url)
 	.then(resp => resp.text())
 	.then(text => {
-		// console.log(text)
 		let dom = new JSDOM(text)
 		let { document } = dom.window;
 		let subDoc = document.getElementById('location-list')
 		let list = [...subDoc.querySelectorAll(selector)]
 			.map(a => [a.textContent, a.getAttribute('id')])
-			// .map(a => a.getAttribute('id'))
-		// console.log(list[0][1].split('_')[0])
 		// return list
-		// node
 		// fs.writeFile('stations.txt', list, (err) => {
 		// 	if (err) throw err;
 		// 	console.log('saved the list')
 		// })
-		let regions = []
-		console.log(regions.includes(list[0][1].split('_')[0]))
+
+		let regionKeys = []
+		let regions = {}
+		// console.log(regionKeys.includes(list[0][1].split('_')[0]))
 		for (let i = 0; i < list.length; i++) {
-			if (regions.includes(list[i][1].split('_')[0]) == false) {
-				regions.push(list[i][1].split('_')[0])
+			if (list[i][1].split('_')[0] == 'stream') {
+				continue
+			} else if (regionKeys.includes(list[i][1].split('_')[0]) == false) {
+				regionKeys.push(list[i][1].split('_')[0])
+				regions[list[i][1].split('_')[0]] = {[list[i][0]]: list[i][1]}
+				console.log('added')
+			} else {
+				regions[list[i][1].split('_')[0]][list[i][0]] = list[i][1]
 			}
 		}
+		// let regionWrite = 'const regions = ' + JSON.stringify(regions)
+		// fs.writeFile('stations.json', regionWrite, (err) => {
+		fs.writeFile('stations.json', JSON.stringify(regions), (err) => {
+			if (err) throw err;
+			console.log('saved the list')
+		})
+
 		console.log(regions)
 	})
 	// .then(list => {
 	// 	let regions = []
-	// 	console.log(regions.includes(list[0][1].split('_')[0]))
-	// 	for (let i; i < list.length; i++) {
+	// 	for (let i = 0; i < list.length; i++) {
 	// 		if (regions.includes(list[i][1].split('_')[0]) == false) {
 	// 			regions.push(list[i][1].split('_')[0])
 	// 		}
