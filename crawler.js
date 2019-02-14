@@ -1,15 +1,18 @@
 const fetch = require('node-fetch')
 const JSDOM = require('jsdom').JSDOM
 const http = require('http')
+const fs = require('fs')
 
 function getAllStations() {
 	// http://www.bom.gov.au/australia/tides/#!
-	let url = "http://www.bom.gov.au/australia/tides/#!"
+	let url = 'https://en.wikipedia.org/wiki/List_of_baked_goods'
+	// let url = "http://www.bom.gov.au/australia/tides/#!"
 	let selector = 'ul > li > a'
 
 	fetch(url)
 		.then(resp => resp.text)
 		.then(text => {
+			// console.log(text)
 			let dom = new JSDOM(text)
 			let { document } = dom.window;
 			let list = [...document.querySelectorAll(selector)]
@@ -19,24 +22,51 @@ function getAllStations() {
 }
 
 //////////////////////// JSDOM VERSION /////////////////////////
-// const JSDOM = require('jsdom').JSDOM
 
-// // let selector = 'ul > li > a'
-// // let url = 'https://en.wikipedia.org/wiki/List_of_baked_goods'
+let selector = 'ul > li > a'
+// let url = 'https://en.wikipedia.org/wiki/List_of_baked_goods'
+let url = "http://www.bom.gov.au/australia/tides/#!"
+
 
 // let selector = 'tr > th'
 // let url = 'http://www.bom.gov.au/australia/tides/print.php?aac=SA_TP036&type=tide&date=29-1-2019&region=SA&tz=Australia/Adelaide&tz_js=ACDT&days=7'
 
-// fetch(url)
-// 	.then(resp => resp.text())
-// 	.then(text => {
-// 		// console.log(text)
-// 		let dom = new JSDOM(text)
-// 		let { document } = dom.window;
-// 		let list = [...document.querySelectorAll(selector)]
-// 			.map(a => a.textContent)
-// 		console.log(list)
-// 	}) 
+fetch(url)
+	.then(resp => resp.text())
+	.then(text => {
+		// console.log(text)
+		let dom = new JSDOM(text)
+		let { document } = dom.window;
+		let subDoc = document.getElementById('location-list')
+		let list = [...subDoc.querySelectorAll(selector)]
+			.map(a => [a.textContent, a.getAttribute('id')])
+			// .map(a => a.getAttribute('id'))
+		// console.log(list[0][1].split('_')[0])
+		// return list
+		// node
+		// fs.writeFile('stations.txt', list, (err) => {
+		// 	if (err) throw err;
+		// 	console.log('saved the list')
+		// })
+		let regions = []
+		console.log(regions.includes(list[0][1].split('_')[0]))
+		for (let i = 0; i < list.length; i++) {
+			if (regions.includes(list[i][1].split('_')[0]) == false) {
+				regions.push(list[i][1].split('_')[0])
+			}
+		}
+		console.log(regions)
+	})
+	// .then(list => {
+	// 	let regions = []
+	// 	console.log(regions.includes(list[0][1].split('_')[0]))
+	// 	for (let i; i < list.length; i++) {
+	// 		if (regions.includes(list[i][1].split('_')[0]) == false) {
+	// 			regions.push(list[i][1].split('_')[0])
+	// 		}
+	// 	}
+	// 	console.log(regions)
+	// })
 
 
 
@@ -165,5 +195,5 @@ function testReg() {
 	console.log(result)
 }
 
-getAllStations()
+// getAllStations()
 // testReg()
