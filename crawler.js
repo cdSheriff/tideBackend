@@ -2,7 +2,21 @@ const fetch = require('node-fetch')
 const JSDOM = require('jsdom').JSDOM
 const http = require('http')
 
+function getAllStations() {
+	// http://www.bom.gov.au/australia/tides/#!
+	let url = "http://www.bom.gov.au/australia/tides/#!"
+	let selector = 'ul > li > a'
 
+	fetch(url)
+		.then(resp => resp.text)
+		.then(text => {
+			let dom = new JSDOM(text)
+			let { document } = dom.window;
+			let list = [...document.querySelectorAll(selector)]
+				.map(a => a.textContent)
+			console.log(list)
+		})
+}
 
 //////////////////////// JSDOM VERSION /////////////////////////
 // const JSDOM = require('jsdom').JSDOM
@@ -151,5 +165,5 @@ function testReg() {
 	console.log(result)
 }
 
-testStation()
+getAllStations()
 // testReg()
