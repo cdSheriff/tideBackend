@@ -47,16 +47,26 @@ fetch(url)
 
 		let regionKeys = []
 		let regions = {}
+		// let tideZones = {
+		// 	'NSW': '',
+		// 	'VIC': '',
+		// 	'QLD': '',
+		// 	'WA': '',
+		// 	'SA': '',
+		// 	'TAS': '',
+		// 	'NT': '',
+		// 	'INT': ''
+		// }
 		// console.log(regionKeys.includes(list[0][1].split('_')[0]))
 		for (let i = 0; i < list.length; i++) {
 			if (list[i][1].split('_')[0] == 'stream') {
 				continue
 			} else if (regionKeys.includes(list[i][1].split('_')[0]) == false) {
 				regionKeys.push(list[i][1].split('_')[0])
-				regions[list[i][1].split('_')[0]] = {[list[i][0]]: list[i][1]}
+				regions[list[i][1].split('_')[0]] = {[list[i][0]]: [list[i][1], 'tz']}
 				console.log('added')
 			} else {
-				regions[list[i][1].split('_')[0]][list[i][0]] = list[i][1]
+				regions[list[i][1].split('_')[0]][list[i][0]] = [list[i][1], 'tz']
 			}
 		}
 		// let regionWrite = 'const regions = ' + JSON.stringify(regions)
